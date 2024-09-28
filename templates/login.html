@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidBrief - Login</title>
+    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <header>
+        <div class="home"><a href="/">Home</a></div>
+        <!-- <div class="aboutus"><a href="/about">About</a></div> -->
+        <!-- <div class="model"><a href="/project">Go to Project</a></div> -->
+        <!-- <div class="login"><a href="/login">Login</a></div> -->
+        <div class="signup"><a href="/signup">Sign Up</a></div>
+    </header>
+    <section>
+        <div class="box">
+            <form action="/login" method="post" name="login-form">
+                <h2>Login</h2>
+
+                <div class="user-mail">
+                    <h4>Email</h4>
+                    <input type="mail" name="email" id="email" required="">
+                </div>
+
+                <div class="pswd">
+                    <h4>Password</h4>
+                    <input type="password" name="password" id="password" required="">
+                </div>
+
+                <div class="inputs">
+                    <input type="submit" value="Submit" id="submit">
+                    <input type="reset" value="Reset" id="reset">
+                </div>
+                <div class="message" id="message">{{message}}</div>
+            </form>
+        </div>
+    </section>
+    <script></script>
+</body>
+</html>

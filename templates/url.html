@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidBrief - Paste URL</title>
+    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="../static/css/url.css">
+</head>
+<body>
+    <header>
+        <div class="home"><a href="/">Home</a></div>
+        <!-- <div class="aboutus"><a href="/about">About</a></div> -->
+        <!-- <div class="model"><a href="/project">Go to Project</a></div> -->
+        <!-- <div class="login"><a href="/login">Login</a></div>
+        <div class="signup"><a href="/signup">Sign Up</a></div> -->
+        <div class="logout"><a href="/logout">Logout</a></div>
+    </header>
+    <div class="headline">
+        <h1>VidBrief : YouTube Transcript Summarizer</h1>
+        <div class="image">
+            <img src="../static/images/vecteezy_youtube-logo-png-youtube-icon-transparent_18930572 (2).png" alt="youtube" id="youtube" width= "75px">
+            <img src="../static/images/ahcd96qodmspspc3cacrk7ua12.png" alt="plus" width="25px" height="25px" id="plus">
+            <img src="../static/images/huggingface_logo-noborder.svg" alt="huggingface" id="huggingface" width="60px">
+        </div>
+        <h3>Your one stop solution for YouTube summaries.</h3>
+    </div>
+    <div class="summaryinput">
+        <form action="/output" method="post">
+            <input type="text" name="url" id="url" placeholder="Paste the YouTube URL" required>
+            <br><br>
+            <input type="number" name="max_len" id="max_len" placeholder="Enter the Max Length of summary you want">
+            <br><br>
+            <div class="submit">
+                <input type="submit" value="Generate" id="input-submit">
+                <input type="reset" value="Clear" id="input-reset">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

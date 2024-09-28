@@ -1,0 +1,10 @@
+flask
+youtube_transcript_api
+numpy
+pandas
+transformers
+nltk
+scikit-learn
+langdetect
+mysql-connector-python
+torch
