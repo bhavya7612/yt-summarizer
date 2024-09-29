@@ -68,7 +68,9 @@ def summarise():
         video_id=url.split('=')[1]
         transcript=summariser.get_transcript(video_id)
         summary=summariser.summarise(video_id, max_len)
-        return render_template('output.html',transcript=transcript,summary=summary)
+        tr_len=len(transcript.split())
+        sum_len=len(summary.split())
+        return render_template('output.html',transcript=transcript,summary=summary,tr_len=tr_len,sum_len=sum_len)
     else:
         return render_template('output.html')
 
