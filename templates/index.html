@@ -11,7 +11,7 @@
     <header>
         <div class="home"><a href="/">Home</a></div>
         <!-- <div class="aboutus"><a href="/about">About</a></div> -->
-        <div class="model"><a href="/project">Go to Project</a></div>
+        <div class="model"><a href="/project">VidBrief</a></div>
         <div class="login"><a href="/login">Login</a></div>
         <div class="signup"><a href="/signup">Sign Up</a></div>
     </header>
@@ -26,7 +26,7 @@
         </div>
         <div class="block2">
             <h3>
-                Features:
+                What we offer?
             </h3>
             <ul>
                 <li>Instant Summaries: Gist of any YouTube video in seconds.</li>
@@ -39,5 +39,14 @@
             <h3>Just Sign Up and let us simplify your video-watching experience! </h3>
         </div>
     </section>
+    <script>
+        const flask_message="{{message}}";
+        function showpopup(flask_message){
+            alert(flask_message);
+        }
+        if(flask_message=="Logout Successful."){
+            showpopup(flask_message);
+        }
+    </script>
 </body>
 </html>

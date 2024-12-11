@@ -26,7 +26,7 @@ def login():
             return render_template('login.html',message="Invalid Email or Password!")
     else:
         if 'id' in session:
-            return render_template('nologinreq.html')
+            return render_template('url.html',message="You are already logged in! You can continue to the project:)")
         else:
             return render_template("login.html")
 
@@ -39,7 +39,7 @@ def signup():
         check = db_obj.user_exists_signup(Email)
         print('Information retrieved from SQL.')
         if len(check)>0:
-            return render_template('signup.html',message="User already exists")
+            return render_template('signup.html',message="User already exists!")
         else:
             res = db_obj.user_signup(user_name,Email,Password)
             if 'id' in session:
@@ -53,16 +53,16 @@ def projectpage():
     if 'id' in session:
         return render_template('url.html')
     else:
-        return render_template('nologin.html')
+        return render_template('login.html', message="You are not logged in! Please login first.")
 
 
-@app.route('/output',methods=['POST'])
+@app.route('/output',methods=['GET','POST'])
 def summarise():
     if request.method=='POST':
         url=request.form['url']
-        max_len=request.form['max_len']
-        if max_len=="":
-            max_len=150
+        max_len=request.form.get('max_len','')
+        if not max_len.isdigit():
+            max_len=195
         else:
             max_len=int(max_len)
         video_id=url.split('=')[1]
@@ -70,14 +70,14 @@ def summarise():
         summary=summariser.summarise(video_id, max_len)
         tr_len=len(transcript.split())
         sum_len=len(summary.split())
-        return render_template('output.html',transcript=transcript,summary=summary,tr_len=tr_len,sum_len=sum_len)
+        return render_template('output.html',transcript=transcript,summary=summary)
     else:
         return render_template('output.html')
 
 @app.route('/logout')
 def logout():
     session.pop('id')
-    return redirect('/')
+    return render_template('index.html', message='Logout Successful.')
 
 if __name__=="__main__":
     app.run(debug=True)

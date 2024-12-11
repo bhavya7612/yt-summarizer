@@ -39,11 +39,18 @@
                     <input type="submit" value="Submit" id="submit">
                     <input type="reset" value="Reset" id="reset">
                 </div>
-                <div class="message" id="message">{{message}}</div>
+                <!-- <div class="message" id="message">{{message}}</div> -->
             </form>
         </div>
     </section>
     <script>
+        const flask_message="{{message}}";
+        function showpopup(flask_message){
+            alert(flask_message);
+        }
+        if(flask_message=="User already exists!"){
+            showpopup(flask_message);
+        }
     </script>
 </body>
 </html>

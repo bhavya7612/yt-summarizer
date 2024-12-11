@@ -37,5 +37,14 @@
             </div>
         </form>
     </div>
+    <script>
+        const flask_message="{{message}}";
+        function showpopup(flask_message){
+            alert(flask_message);
+        }
+        if(flask_message=="You are already logged in! You can continue to the project:)"){
+            showpopup(flask_message);
+        }
+    </script>
 </body>
 </html>
