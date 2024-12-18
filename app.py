@@ -62,7 +62,7 @@ def summarise():
         url=request.form['url']
         max_len=request.form.get('max_len','')
         if not max_len.isdigit():
-            max_len=195
+            max_len=150
         else:
             max_len=int(max_len)
         video_id=url.split('=')[1]
