@@ -6,5 +6,5 @@ transformers
 nltk
 scikit-learn
 langdetect
-mysql-connector-python
+mysql-connector-python==8.2.0
 torch
