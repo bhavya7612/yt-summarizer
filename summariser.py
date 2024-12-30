@@ -5,6 +5,11 @@ from nltk.tokenize import sent_tokenize
 from youtube_transcript_api import YouTubeTranscriptApi
 import numpy as np
 from langdetect import detect
+import os
+import google.generativeai as genai
+import translator
+from dotenv import load_dotenv
+load_dotenv()
 
 def get_transcript(video_id):
     try:
@@ -21,43 +26,77 @@ def is_transcript_english(transcript_text):
     except Exception as e:
         return False
 
-# def chunk_text(text, max_chunk_size=1024):
-#     # Split the text into chunks with a maximum size of `max_chunk_size` tokens
-#     chunks = []
-#     words = text.split()
-#     current_chunk = []
-#     current_chunk_size = 0
-
-#     for word in words:
-#         current_chunk.append(word)
-#         current_chunk_size += len(word) + 1  # Word length + space
-#         if current_chunk_size > max_chunk_size:
-#             chunks.append(" ".join(current_chunk))
-#             current_chunk = []
-#             current_chunk_size = 0
-
-#     # Add the last chunk if any
-#     if current_chunk:
-#         chunks.append(" ".join(current_chunk))
-
-#     return chunks
-
-def abstractive_summarization(transcript_text, max_len):
-
-    # summarizer = pipeline('summarization',model='t5-small')
-    # chunks=chunk_text(transcript_text)
-    # summaries = []
-    # for chunk in chunks:
-    #     chunk_summary=summarizer(chunk, min_length=30, max_length=max_len, length_penalty=1.5, do_sample=False)
-    #     summaries.append(chunk_summary[0]['summary_text'])
-    
-    # final_summary=" ".join(summaries)
-    # return final_summary
+def abstractive_summarization(transcript_text, max_len=150, lang="en"):
+    api_key=os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=api_key)
+    prompt=f"You are Youtube transcript summarizer. Summarize the given transcript text within {max_len} words. The transcript text is:\n{transcript_text} "
+    model=genai.GenerativeModel("gemini-1.5-pro")
+    try:
+        response=model.generate_content(prompt)
+        if lang=="en":
+            return response.text
+        elif lang=="hi":
+            response=translator.translate_to_hi(response.text)
+            return response
+        elif lang=="mr":
+            response=translator.translate_to_marathi(response.text)
+            return response
+        elif lang=="gu":
+            response=translator.translate_to_guj(response.text)
+            return response
+        elif lang=="ml":
+            response=translator.translate_to_malayalam(response.text)
+            return response
+        elif lang=="kn":
+            response=translator.translate_to_kannada(response.text)
+            return response
+        elif lang=="bn":
+            response=translator.translate_to_bengali(response.text)
+            return response
+        elif lang=="pa":
+            response=translator.translate_to_punjabi(response.text)
+            return response
+        elif lang=="ta":
+            response=translator.translate_to_tamil(response.text)
+            return response
+        elif lang=="te":
+            response=translator.translate_to_telugu(response.text)
+            return response
+        elif lang=="ar":
+            response=translator.translate_to_arabic(response.text)
+            return response
+        elif lang=="fr":
+            response=translator.translate_to_french(response.text)
+            return response
+        elif lang=="de":
+            response=translator.translate_to_german(response.text)
+            return response
+        elif lang=="ja":
+            response=translator.translate_to_japanese(response.text)
+            return response
+        elif lang=="ru":
+            response=translator.translate_to_russian(response.text)
+            return response
+        elif lang=="es":
+            response=translator.translate_to_spanish(response.text)
+            return response
+    except Exception as e:
+        raise e
 
     # --------------------OR-----------------------
 
-    summarizer = pipeline('summarization',model='t5-small')
-    summary=''
+    # summarizer = pipeline('summarization',model='t5-small')
+    # summary=''
+
+    # for i in range(0, (len(transcript_text)//500) + 1):
+    #     summary_text = summarizer(transcript_text[i * 500:(i+1) * 500], max_length=max_len)[0]['summary_text']
+    #     summary = summary + summary_text + ' '
+    # return summary
+
+    # --------------------OR-----------------------
+    
+    # summarizer = pipeline('summarization',model='t5-small')
+    # summary=''
     # tokenizer = T5Tokenizer.from_pretrained('t5-small')
     # input_ids = tokenizer.encode(transcript_text, return_tensors='pt', truncation=True)
 
@@ -68,31 +107,10 @@ def abstractive_summarization(transcript_text, max_len):
     #     summary_text = summarizer(chunk_text, max_length=max_len, truncation=True)[0]['summary_text']
     #     summary += summary_text + ' '
     
-    for i in range(0, (len(transcript_text)//500) + 1):
-        summary_text = summarizer(transcript_text[i * 500:(i+1) * 500], max_length=max_len)[0]['summary_text']
-        summary = summary + summary_text + ' '
-    return summary
-
-    #---------------------OR-------------------------
-
-    # summarizer = pipeline('summarization', model='t5-small')
-    # chunk_size = 1000
-    # summary_parts = []
-
-    # # Summarize each chunk
-    # for i in range(0, (len(transcript_text) // chunk_size) + 1):
-    #     chunk = transcript_text[i * chunk_size : (i + 1) * chunk_size]
-    #     if chunk.strip():  # Ensure the chunk isn't empty
-    #         summary_text = summarizer(chunk, max_length=100, truncation=True)[0]['summary_text']
-    #         summary_parts.append(summary_text)
-
-    # # Combine chunk summaries into an intermediate summary
-    # intermediate_summary = ' '.join(summary_parts)
-
-    # # Re-summarize the intermediate summary to fit max_len
-    # final_summary = summarizer(intermediate_summary, max_length=max_len, truncation=True)[0]['summary_text']
-
-    # return final_summary
+    # for i in range(0, (len(transcript_text)//500) + 1):
+    #     summary_text = summarizer(transcript_text[i * 500:(i+1) * 500], max_length=max_len)[0]['summary_text']
+    #     summary = summary + summary_text + ' '
+    # return summary
 
 def extractive_summarization(transcript_text):
     sentences = sent_tokenize(transcript_text)
@@ -117,7 +135,7 @@ def extractive_summarization(transcript_text):
     summary = " ".join([sentences[idx] for idx in selected_sentences])
     return summary
 
-def summarise(video_id, max_len):
+def summarise(video_id, max_len, lang):
     try:
         transcript_text = get_transcript(video_id)
     except:
@@ -127,7 +145,6 @@ def summarise(video_id, max_len):
     if len(transcript_text.split()) > 3000:
         summary = extractive_summarization(transcript_text)
     else:
-        summary = abstractive_summarization(transcript_text, max_len)
+        summary = abstractive_summarization(transcript_text, max_len, lang)
 
     return summary
-

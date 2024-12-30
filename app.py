@@ -19,7 +19,7 @@ def login():
         check = db_obj.user_login(Email,Password)
         print('Information retrieved from SQL.')
         if len(check)>0:
-            session["id"] = check[0][1]
+            session["id"] = check[0][0]
             print("session --> ",session)
             return redirect("/project")
         else:
@@ -61,16 +61,24 @@ def summarise():
     if request.method=='POST':
         url=request.form['url']
         max_len=request.form.get('max_len','')
+        lang=request.form['lang']
         if not max_len.isdigit():
             max_len=150
         else:
             max_len=int(max_len)
         video_id=url.split('=')[1]
+        title=db_obj.insert_video_info(video_id,session['id'])
         transcript=summariser.get_transcript(video_id)
-        summary=summariser.summarise(video_id, max_len)
-        tr_len=len(transcript.split())
-        sum_len=len(summary.split())
-        return render_template('output.html',transcript=transcript,summary=summary)
+        summary=summariser.summarise(video_id, max_len, lang)
+        langs={
+                'hi':'Hindi', 'mr':'Marathi', 'gu':'Gujarati',\
+                'ml':'malayalam', 'kn':'Kannada', 'bn':'Bengali',\
+                'pa':'Punjabi', 'ta':'Tamil', 'te':'Telugu',\
+                'ar':'Arabic', 'fr':'French', 'de':'German',\
+                'ja':'Japanese', 'ru':'Russian', 'es':'Spanish'}
+        # tr_len=len(transcript.split())
+        # sum_len=len(summary.split())
+        return render_template('output.html', transcript=transcript, summary=summary, title=title, lang=langs[lang])
     else:
         return render_template('output.html')
 
