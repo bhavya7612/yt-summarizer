@@ -29,7 +29,26 @@
         <form action="/output" method="post">
             <input type="text" name="url" id="url" placeholder="Paste the YouTube URL" required>
             <br><br>
-            <input type="number" name="max_len" id="max_len" placeholder="Enter the Max token Length of summary you want">
+            <input type="number" name="max_len" id="max_len" placeholder="Enter the Max Length of summary">
+            <br><br>
+            <select name="lang" id="lang">
+                <option value="en" id="options" selected>English</option>
+                <option value="hi" id="options">Hindi</option>
+                <option value="mr" id="options">Marathi</option>
+                <option value="gu" id="options">Gujarati</option>
+                <option value="ml" id="options">Malayalam</option>
+                <option value="kn" id="options">Kannada</option>
+                <option value="bn" id="options">Bengali</option>
+                <option value="pa" id="options">Punjabi</option>
+                <option value="ta" id="options">Tamil</option>
+                <option value="te" id="options">Telugu</option>
+                <option value="ar" id="options">Arabic</option>
+                <option value="fr" id="options">French</option>
+                <option value="de" id="options">German</option>
+                <option value="ja" id="options">Japanese</option>
+                <option value="ru" id="options">Russian</option>
+                <option value="es" id="options">Spanish</option>
+            </select>
             <br><br>
             <div class="submit">
                 <input type="submit" value="Generate" id="input-submit">
