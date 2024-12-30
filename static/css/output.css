@@ -29,6 +29,12 @@ body
     justify-content: start;
     background-image: radial-gradient(ellipse, rgba(9, 9, 54, 0.767), rgba(4, 4, 39, 0.89), black);
 }
+body h2
+{
+    color: beige;
+    margin-top: 1rem;
+    font-weight: normal;
+}
 a
 {
     color: beige;

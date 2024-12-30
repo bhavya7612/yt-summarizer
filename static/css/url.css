@@ -81,7 +81,8 @@ header
     position: absolute;
     top: 50%;
 } 
-#url,#max_len
+
+#url,#max_len, #lang
 {
     width: 600px;
     height: 40px;
@@ -95,12 +96,27 @@ header
     font-family: 'Poppins';
 }
 
+#lang
+{
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* text-align: center; */
+}
+
 #url::placeholder,#max_len::placeholder
 {
     /* font-style: italic; */
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Poppins';
 }
+
+#options
+{
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 0.8rem;
+}
+
 .submit
 {
     display: flex;
