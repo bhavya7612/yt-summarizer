@@ -1,13 +1,7 @@
 # contains code for sql database connectivity and for user authentication
 
 import mysql.connector as connection
-from googleapiclient.discovery import build
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-api_key=os.getenv("YT_API_KEY")
-youtube = build('youtube', 'v3', developerKey=api_key)
+import video_info
 
 class mysqlconnector:
     def __init__(self):
@@ -41,18 +35,16 @@ class mysqlconnector:
     
     # storing video information
 
-    def get_video_info(self, user_id, video_id):
+    def check_video_info(self, user_id, video_id):
         self.cur.execute(f"select * from videos where u_id={user_id} and vid_id='{video_id}';")
         res=self.cur.fetchall()
         return res
     
     def insert_video_info(self,video_id,session_id):
-        res=self.get_video_info(session_id, video_id)
+        res=self.check_video_info(session_id, video_id)
         video_title=""
         if len(res)==0:
-            request=youtube.videos().list(part="snippet", id=video_id)
-            response=request.execute()
-            video_title+=response['items'][0]['snippet']['title']
+            video_title+=video_info.get_video_title(video_id)
             print("Request generated for -->", video_title)
             self.cur.execute(f"insert into videos values({session_id}, '{video_id}', '{video_title}', curdate(), curtime());")
             self.conn.commit()

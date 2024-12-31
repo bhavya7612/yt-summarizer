@@ -71,11 +71,11 @@ def summarise():
         transcript=summariser.get_transcript(video_id)
         summary=summariser.summarise(video_id, max_len, lang)
         langs={
-                'hi':'Hindi', 'mr':'Marathi', 'gu':'Gujarati',\
-                'ml':'malayalam', 'kn':'Kannada', 'bn':'Bengali',\
-                'pa':'Punjabi', 'ta':'Tamil', 'te':'Telugu',\
-                'ar':'Arabic', 'fr':'French', 'de':'German',\
-                'ja':'Japanese', 'ru':'Russian', 'es':'Spanish'}
+                'en':'English', 'hi':'Hindi', 'mr':'Marathi',\
+                'gu':'Gujarati', 'ml':'malayalam', 'kn':'Kannada',\
+                'bn':'Bengali', 'pa':'Punjabi', 'ta':'Tamil',\
+                'te':'Telugu', 'ar':'Arabic', 'fr':'French',\
+                'de':'German', 'ja':'Japanese', 'ru':'Russian', 'es':'Spanish'}
         # tr_len=len(transcript.split())
         # sum_len=len(summary.split())
         return render_template('output.html', transcript=transcript, summary=summary, title=title, lang=langs[lang])

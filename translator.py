@@ -76,3 +76,52 @@ def translate_to_spanish(text):
     res=trans.translate(text, src='en', dest='es')
     res=str(res.text)
     return res
+
+def translate(text, lang):
+    if lang=="en":
+        return text
+    elif lang=="hi":
+        response=translate_to_hi(text)
+        return response
+    elif lang=="mr":
+        response=translate_to_marathi(text)
+        return response
+    elif lang=="gu":
+        response=translate_to_guj(text)
+        return response
+    elif lang=="ml":
+        response=translate_to_malayalam(text)
+        return response
+    elif lang=="kn":
+        response=translate_to_kannada(text)
+        return response
+    elif lang=="bn":
+        response=translate_to_bengali(text)
+        return response
+    elif lang=="pa":
+        response=translate_to_punjabi(text)
+        return response
+    elif lang=="ta":
+        response=translate_to_tamil(text)
+        return response
+    elif lang=="te":
+        response=translate_to_telugu(text)
+        return response
+    elif lang=="ar":
+        response=translate_to_arabic(text)
+        return response
+    elif lang=="fr":
+        response=translate_to_french(text)
+        return response
+    elif lang=="de":
+        response=translate_to_german(text)
+        return response
+    elif lang=="ja":
+        response=translate_to_japanese(text)
+        return response
+    elif lang=="ru":
+        response=translate_to_russian(text)
+        return response
+    elif lang=="es":
+        response=translate_to_spanish(text)
+        return response
