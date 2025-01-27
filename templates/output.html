@@ -3,6 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{vid_title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="../static/css/output.css">
+</head>
+<body>
+    <header>
+        <div class="model"><a href="/project">&larr; Back</a></div>
+        <div class="home"><a href="/">Home</a></div>
+    </header>
+    <div class="lang-container">
+        <label>
+            <input type="checkbox" name="" id="">
+            <div class="toggle" id="toggle">
+                <span class="top common"></span>
+                <span class="mid common"></span>
+                <span class="bottom common"></span>
+            </div>
+            <div class="tab-container">
+                <button data-lang="en" class="tab active">English</button>
+                <button data-lang="hi" class="tab">Hindi</button>
+                <button data-lang="mr" class="tab">Marathi</button>
+                <button data-lang="gu" class="tab">Gujarati</button>
+                <button data-lang="ml" class="tab">Malayalam</button>
+                <button data-lang="kn" class="tab">Kannada</button>
+                <button data-lang="bn" class="tab">Bengali</button>
+                <button data-lang="pa" class="tab">Punjabi</button>
+                <button data-lang="ta" class="tab">Tamil</button>
+                <button data-lang="te" class="tab">Telugu</button>
+                <button data-lang="ar" class="tab">Arabic</button>
+                <button data-lang="fr" class="tab">French</button>
+                <button data-lang="de" class="tab">German</button>
+                <button data-lang="ja" class="tab">Japanese</button>
+                <button data-lang="ru" class="tab">Russian</button>
+                <button data-lang="es" class="tab">Spanish</button>
+                <button data-lang="transcript" class="tab">Transcript</button>
+            </div>
+        </label>
+        <div class="content-container" id="content-container">
+            <h2>{{vid_title}}</h2>
+            <div class="sum-container" id="sum-container">
+                <div class="btn-container">
+                    <button class="btn" id="btn-print-this" onclick="window.print()"><i class="fa fa-download"></i><p>Save</p></button>
+                    <button class="btn" id="btn-speak"><i class="fa fa-volume-up"></i></button> 
+                    <button class="btn" id="btn-pause"><i class="fa fa-pause"></i></button> 
+                    <button class="btn" id="btn-resume"><i class="fa fa-play"></i></button> 
+                </div>
+                <section id="transcript" class="content">
+                    <h3>Transcript</h3>
+                    <p>{{transcript}}</p>
+                </section>
+                <section id="en" class="content active">
+                    <h3>Summary (English)</h3>
+                    <p>{{summary_en}} </p>
+                </section>
+                <section id="hi" class="content">
+                    <h3>Summary (Hindi)</h3>
+                    <p>{{summary_hi}} </p>
+                </section>
+                <section id="mr" class="content">
+                    <h3>Summary (Marathi)</h3>
+                    <p>{{summary_mr}} </p>
+                </section>
+                <section id="gu" class="content">
+                    <h3>Summary (Gujarati)</h3>
+                    <p>{{summary_guj}} </p>
+                </section>
+                <section id="ml" class="content">
+                    <h3>Summary (Malayalam)</h3>
+                    <p>{{summary_malaya}} </p>
+                </section>
+                <section id="kn" class="content">
+                    <h3>Summary (Kannada)</h3>
+                    <p>{{summary_kan}} </p>
+                </section>
+                <section id="bn" class="content">
+                    <h3>Summary (Bengali)</h3>
+                    <p>{{summary_ben}} </p>
+                </section>
+                <section id="pa" class="content">
+                    <h3>Summary (Punjabi)</h3>
+                    <p>{{summary_pj}} </p>
+                </section>
+                <section id="ta" class="content">
+                    <h3>Summary (Tamil)</h3>
+                    <p>{{summary_tam}}</p>
+                </section>
+                <section id="te" class="content">
+                    <h3>Summary (Telugu)</h3>
+                    <p>{{summary_tel}}</p>
+                </section>
+                <section id="ar" class="content">
+                    <h3>Summary (Arabic)</h3>
+                    <p>{{summary_ar}} </p>
+                </section>
+                <section id="fr" class="content">
+                    <h3>Summary (French)</h3>
+                    <p>{{summary_french}}</p>
+                </section>
+                <section id="de" class="content">
+                    <h3>Summary (German)</h3>
+                    <p>{{summary_germ}}</p>
+                </section>
+                <section id="ja" class="content">
+                    <h3>Summary (Japanese)</h3>
+                    <p>{{summary_jap}} </p>
+                </section>
+                <section id="ru" class="content">
+                    <h3>Summary (Russian)</h3>
+                    <p>{{summary_rus}} </p>
+                </section>
+                <section id="es" class="content">
+                    <h3>Summary (Spanish)</h3>
+                    <p>{{summary_sp}} </p>
+                </section>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../static/js/output.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VidBrief - Summary</title>
     <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="../static/css/output.css">
@@ -19,15 +148,13 @@
             <div id="inner1">
                 {{transcript}}
             </div>
-            <!-- <h3>{{tr_len}} words</h3> -->
         </div>
         <div id="summary">
             <h2>Summary ({{lang}})</h2>
             <div id="inner2">
                 {{summary}}
             </div>
-            <!-- <h3>{{sum_len}} words</h3> -->
         </div>
     </div>
 </body>
-</html>
+</html> -->

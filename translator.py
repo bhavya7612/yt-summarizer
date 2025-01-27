@@ -2,7 +2,7 @@ from googletrans import Translator
 
 trans=Translator()
 
-def translate_to_hi(text):
+def translate_to_hindi(text):
     res=trans.translate(text, src='en', dest='hi')
     res=str(res.text)
     return res
@@ -81,7 +81,7 @@ def translate(text, lang):
     if lang=="en":
         return text
     elif lang=="hi":
-        response=translate_to_hi(text)
+        response=translate_to_hindi(text)
         return response
     elif lang=="mr":
         response=translate_to_marathi(text)

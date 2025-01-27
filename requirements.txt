@@ -3,12 +3,7 @@ youtube_transcript_api
 google-api-python-client
 google-generativeai
 googletrans==3.1.0a0
-python-dotenv
-numpy
-pandas
-transformers
-nltk
-scikit-learn
-langdetect
 mysql-connector-python==8.2.0
-torch
+gtts
+langdetect
+python-dotenv
