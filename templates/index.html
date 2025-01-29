@@ -11,8 +11,12 @@
     <header>
         <div class="home"><a href="/">Home</a></div>
         <div class="model"><a href="/project">VidBrief</a></div>
-        <div class="login"><a href="/login">Login</a></div>
-        <div class="signup"><a href="/signup">Sign Up</a></div>
+        {% if logged_in %}
+            <div class="logout"><a href="/logout">Logout</a></div>
+        {% else %}
+            <div class="login"><a href="/login">Login</a></div>
+            <div class="signup"><a href="/signup">Sign Up</a></div>
+        {% endif %}
     </header>
     <section>
         <h1>VidBrief : YouTube Transcript Summarizer</h1>

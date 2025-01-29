@@ -13,7 +13,7 @@ db_obj=mysqlconnector()
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', logged_in = session.get('logged_in', False))
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -24,6 +24,7 @@ def login():
         print('Information retrieved from SQL.')
         if len(check)>0:
             session["id"] = check[0][0]
+            session['logged_in'] = True
             print("session --> ",session)
             return redirect("/project")
         else:
@@ -147,6 +148,7 @@ def summarise():
 @app.route('/logout')
 def logout():
     session.pop('id')
+    session.pop('logged_in', None)
     return render_template('index.html', message='Logout Successful.')
 
 if __name__=="__main__":

@@ -13,6 +13,8 @@
 const tabs = document.querySelectorAll('.tab');
 const contents = document.querySelectorAll('.content');
 const speakButton = document.getElementById('btn-speak');
+const playPauseButton = document.getElementById('btn-playpause');
+const playPauseIcon = document.getElementById('playpauseicon');
 let audio = null;
 
 // Map of languages to their respective language codes
@@ -65,6 +67,11 @@ speakButton.addEventListener("click", async () => {
         return;
     }
 
+    if(audio) {
+        audio.pause();
+        audio.currentTime=0;
+    }
+    
     try {
         // Get the language code for the active tab
         const language = languageMap[activeElement.id] || "en";
@@ -87,31 +94,56 @@ speakButton.addEventListener("click", async () => {
 
         const audioBlob = await response.blob();
         const audioUrl = URL.createObjectURL(audioBlob);
+        if(audio)
+        {
+            audio.pause();
+        }
+		
         audio = new Audio(audioUrl);
 
         // Play the audio
-        document.getElementById('btn-pause').disabled = false;
-        document.getElementById('btn-resume').disabled = true;
         audio.play();
+        // document.getElementById('btn-pause').disabled = false;
+        // document.getElementById('btn-resume').disabled = true;
+        playPauseButton.disabled = false; // Enable the play/pause button
+        playPauseIcon.classList.remove('fa-play'); // Ensure icon shows 'Pause'
+        playPauseIcon.classList.add('fa-pause');
     }
     catch (error) {
         console.error("Error:", error);
         alert("An error occurred while converting text to speech.");
     }
+    audio.addEventListener('ended', () => {
+        playPauseIcon.classList.remove('fa-pause'); // Switch icon to 'Play'
+        playPauseIcon.classList.add('fa-play');
+        // currentAudio = null; // Reset the currentAudio as playback is finished
+    });
 });
 
-document.getElementById('btn-pause').addEventListener('click', () => {
-    if (audio && !audio.paused) {
-        audio.pause();
-        document.getElementById('btn-pause').disabled = true;
-        document.getElementById('btn-resume').disabled = false;
+playPauseButton.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play(); // Resume audio
+      playPauseIcon.classList.remove('fa-play'); // Switch icon to 'Pause'
+      playPauseIcon.classList.add('fa-pause');
+    } else {
+      audio.pause(); // Pause audio
+      playPauseIcon.classList.remove('fa-pause'); // Switch icon to 'Play'
+      playPauseIcon.classList.add('fa-play');
     }
 });
 
-document.getElementById('btn-resume').addEventListener('click', () => {
-    if (audio && audio.paused) {
-        audio.play();
-        document.getElementById('btn-pause').disabled = false;
-        document.getElementById('btn-resume').disabled = true;
-    }
-});
+// document.getElementById('btn-pause').addEventListener('click', () => {
+//     if (audio && !audio.paused) {
+//         audio.pause();
+//         document.getElementById('btn-pause').disabled = true;
+//         document.getElementById('btn-resume').disabled = false;
+//     }
+// });
+
+// document.getElementById('btn-resume').addEventListener('click', () => {
+//     if (audio && audio.paused) {
+//         audio.play();
+//         document.getElementById('btn-pause').disabled = false;
+//         document.getElementById('btn-resume').disabled = true;
+//     }
+// });
