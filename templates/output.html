@@ -57,67 +57,260 @@
                 </section>
                 <section id="en" class="content active">
                     <h3>Summary (English)</h3>
-                    <p>{{summary_en}} </p>
+
+                    {% for block in summary_en %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- <p>{{summary_en}} </p> -->
                 </section>
                 <section id="hi" class="content">
                     <h3>Summary (Hindi)</h3>
-                    <p>{{summary_hi}} </p>
+
+                    {% for block in summary_hi %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_hi}} </p> -->
                 </section>
                 <section id="mr" class="content">
                     <h3>Summary (Marathi)</h3>
-                    <p>{{summary_mr}} </p>
+
+                    {% for block in summary_mr %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_mr}} </p> -->
                 </section>
                 <section id="gu" class="content">
                     <h3>Summary (Gujarati)</h3>
-                    <p>{{summary_guj}} </p>
+
+                    {% for block in summary_guj %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_guj}} </p> -->
                 </section>
                 <section id="ml" class="content">
                     <h3>Summary (Malayalam)</h3>
-                    <p>{{summary_malaya}} </p>
+
+                    {% for block in summary_malaya %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_malaya}} </p> -->
                 </section>
                 <section id="kn" class="content">
                     <h3>Summary (Kannada)</h3>
-                    <p>{{summary_kan}} </p>
+
+                    {% for block in summary_kan %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_kan}} </p> -->
                 </section>
                 <section id="bn" class="content">
                     <h3>Summary (Bengali)</h3>
-                    <p>{{summary_ben}} </p>
+
+                    {% for block in summary_ben %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_ben}} </p> -->
                 </section>
                 <section id="pa" class="content">
                     <h3>Summary (Punjabi)</h3>
-                    <p>{{summary_pj}} </p>
+
+                    {% for block in summary_pj %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_pj}} </p> -->
                 </section>
                 <section id="ta" class="content">
                     <h3>Summary (Tamil)</h3>
-                    <p>{{summary_tam}}</p>
+
+                    {% for block in summary_tam %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_tam}}</p> -->
                 </section>
                 <section id="te" class="content">
                     <h3>Summary (Telugu)</h3>
-                    <p>{{summary_tel}}</p>
+
+                    {% for block in summary_tel %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_tel}}</p> -->
                 </section>
                 <section id="ar" class="content">
                     <h3>Summary (Arabic)</h3>
-                    <p>{{summary_ar}} </p>
+
+                    {% for block in summary_ar %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_ar}} </p> -->
                 </section>
                 <section id="fr" class="content">
                     <h3>Summary (French)</h3>
-                    <p>{{summary_french}}</p>
+
+                    {% for block in summary_french %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_french}}</p> -->
                 </section>
                 <section id="de" class="content">
                     <h3>Summary (German)</h3>
-                    <p>{{summary_germ}}</p>
+
+                    {% for block in summary_germ %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_germ}}</p> -->
                 </section>
                 <section id="ja" class="content">
                     <h3>Summary (Japanese)</h3>
-                    <p>{{summary_jap}} </p>
+
+                    {% for block in summary_jap %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_jap}} </p> -->
                 </section>
                 <section id="ru" class="content">
                     <h3>Summary (Russian)</h3>
-                    <p>{{summary_rus}} </p>
+
+                    {% for block in summary_rus %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_rus}} </p> -->
                 </section>
                 <section id="es" class="content">
                     <h3>Summary (Spanish)</h3>
-                    <p>{{summary_sp}} </p>
+
+                    {% for block in summary_sp %}
+                        {% if block.type == "list" %}
+                            <ul>
+                                {% for item in block.content %}
+                                    <li>{{ item | safe }}</li>  <!-- Ensures bold text is properly rendered -->
+                                {% endfor %}
+                            </ul>
+                        {% elif block.type == "paragraph" %}
+                            <p>{{ block.content | safe }}</p>  <!-- Ensures bold text is properly rendered -->
+                        {% endif %}
+                    {% endfor %}
+                    <!-- <p>{{summary_sp}} </p> -->
                 </section>
             </div>
         </div>

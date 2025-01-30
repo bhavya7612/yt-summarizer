@@ -7,3 +7,4 @@ mysql-connector-python==8.2.0
 gtts
 langdetect
 python-dotenv
+beautifulsoup4
